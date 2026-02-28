@@ -1,41 +1,43 @@
-# Website
+# Tutorial Intro
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+Let's discover **Docusaurus in less than 5 minutes**.
 
-## Installation
+## Getting Started
 
-```bash
-yarn
-```
+Get started by **creating a new site**.
 
-## Local Development
+Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
 
-```bash
-yarn start
-```
+### What you'll need
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
+  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
-## Build
+## Generate a new site
 
-```bash
-yarn build
-```
+Generate a new Docusaurus site using the **classic template**.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-## Deployment
-
-Using SSH:
+The classic template will automatically be added to your project after you run the command:
 
 ```bash
-USE_SSH=true yarn deploy
+npm init docusaurus@latest my-website classic
 ```
 
-Not using SSH:
+You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+
+The command also installs all necessary dependencies you need to run Docusaurus.
+
+## Start your site
+
+Run the development server:
 
 ```bash
-GIT_USER=<Your GitHub username> yarn deploy
+cd my-website
+npm run start
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+
+Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
