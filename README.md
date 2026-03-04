@@ -1,5 +1,11 @@
 # Tutorial Intro
 
+## Preparing environment
+[culey] Before run the project, run this command in your workspace terminal:
+```bash
+npm install
+```
+
 ## Start your site
 
 Run the development server:
