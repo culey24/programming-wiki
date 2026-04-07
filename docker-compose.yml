@@ -1,6 +1,7 @@
 services:
+  # Debian-based image avoids Alpine "locale: not found" / no usable locales warnings
   db:
-    image: postgres:16-alpine
+    image: postgres:16-bookworm
     restart: unless-stopped
     environment:
       POSTGRES_DB: programming_wiki
@@ -43,6 +44,7 @@ services:
       - "8000:8000"
     environment:
       OPENROUTER_API_KEY: ${OPENROUTER_API_KEY}
+      OPENROUTER_MODEL: ${OPENROUTER_MODEL:-google/gemini-2.5-flash}
       CONTENT_DIR: /content
       CHROMA_PATH: /chroma_db
     volumes:

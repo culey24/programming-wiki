@@ -23,7 +23,8 @@ load_dotenv()
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-MODEL = "google/gemini-2.5-flash-preview"
+# See https://openrouter.ai/google/gemini-2.5-flash (preview slug may change or be removed)
+MODEL = os.getenv("OPENROUTER_MODEL", "google/gemini-2.5-flash")
 
 OPENROUTER_HEADERS = {
     "Authorization": f"Bearer {OPENROUTER_API_KEY}",

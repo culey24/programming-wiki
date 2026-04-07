@@ -19,7 +19,7 @@ app.add_middleware(
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
-MODEL = "google/gemini-2.5-flash-preview"
+MODEL = os.getenv("OPENROUTER_MODEL", "google/gemini-2.5-flash")
 
 
 class Message(BaseModel):
