@@ -6,7 +6,8 @@ import { fileURLToPath } from 'url'
 const router = Router()
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
-const CONTENT_DIR = resolve(__dirname, '../../../../content')
+// backend/src/routes → repo root is three levels up (not four)
+const CONTENT_DIR = resolve(process.env.CONTENT_DIR || resolve(__dirname, '../../../content'))
 
 // Sanitize path to prevent directory traversal
 function sanitizePath(input) {

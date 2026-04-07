@@ -51,6 +51,18 @@ services:
       - ./content:/content:ro
       - chroma_data:/chroma_db
 
+  docs-site:
+    build:
+      context: .
+      dockerfile: docs-site/Dockerfile
+      args:
+        MAIN_APP_URL: http://localhost:5173
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      MAIN_APP_URL: http://localhost:5173
+
   frontend:
     build:
       context: ./frontend
@@ -59,8 +71,8 @@ services:
     ports:
       - "5173:5173"
     environment:
-      # Vite dev server proxy target (inside Docker network)
       VITE_DEV_BACKEND: http://backend:3001
+      VITE_DOCS_URL: http://localhost:3000
     depends_on:
       backend:
         condition: service_started

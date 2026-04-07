@@ -1,5 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext.jsx'
+import { docsUrl } from '../../lib/docsUrl.js'
 
 export default function Navbar() {
   const { user, logout } = useAuth()
@@ -15,36 +16,23 @@ export default function Navbar() {
       className="sticky top-0 z-40 flex items-center justify-between px-6 h-14 border-b"
       style={{ background: 'var(--color-surface)', borderColor: 'var(--color-border)' }}
     >
-      {/* Logo */}
       <Link to="/" className="flex items-center gap-2 font-bold text-lg" style={{ color: 'var(--color-text)' }}>
         <span className="text-2xl">⚡</span>
         <span>Programming Wiki</span>
       </Link>
 
-      {/* Nav links */}
       <div className="flex items-center gap-1">
-        <NavLink
-          to="/docs/intro"
-          className={({ isActive }) =>
-            `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-              isActive
-                ? 'text-white'
-                : 'hover:text-white'
-            }`
-          }
-          style={({ isActive }) => ({
-            background: isActive ? 'var(--color-accent)' : 'transparent',
-            color: isActive ? 'white' : 'var(--color-muted)',
-          })}
+        <a
+          href={docsUrl('/intro')}
+          className="px-3 py-1.5 rounded-md text-sm font-medium transition-colors hover:text-white"
+          style={{ color: 'var(--color-muted)' }}
         >
           Docs
-        </NavLink>
+        </a>
         <NavLink
           to="/playground"
           className={({ isActive }) =>
-            `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-              isActive ? 'text-white' : ''
-            }`
+            `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${isActive ? 'text-white' : ''}`
           }
           style={({ isActive }) => ({
             background: isActive ? 'var(--color-accent)' : 'transparent',
@@ -55,7 +43,6 @@ export default function Navbar() {
         </NavLink>
       </div>
 
-      {/* Auth */}
       <div className="flex items-center gap-3">
         {user ? (
           <>

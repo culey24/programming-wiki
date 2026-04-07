@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
+import { docsUrl } from '../lib/docsUrl.js'
 
 const LANGUAGES = [
-  { name: 'Python', icon: '🐍', color: '#3b82f6', path: '/docs/Python/Chapter_1', desc: 'From basics to advanced patterns' },
-  { name: 'Rust', icon: '⚙️', color: '#f97316', path: '/docs/Rust/Chapter_0', desc: 'Systems programming done right' },
-  { name: 'JavaScript', icon: '⚡', color: '#eab308', path: '/playground', desc: 'The language of the web' },
-  { name: 'C++', icon: '🔧', color: '#8b5cf6', path: '/playground', desc: 'High-performance computing' },
+  { name: 'Python', icon: '🐍', color: '#3b82f6', docPath: 'Python/Chapter_1', desc: 'From basics to advanced patterns' },
+  { name: 'Rust', icon: '⚙️', color: '#f97316', docPath: 'Rust/Chapter_0', desc: 'Systems programming done right' },
+  { name: 'JavaScript', icon: '⚡', color: '#eab308', appPath: '/playground', desc: 'The language of the web' },
+  { name: 'C++', icon: '🔧', color: '#8b5cf6', appPath: '/playground', desc: 'High-performance computing' },
 ]
 
 const FEATURES = [
@@ -53,13 +54,13 @@ export default function Home() {
             Interactive docs, live code execution, and an AI tutor — all in one place.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link
-              to="/docs/intro"
-              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90 hover:scale-105"
+            <a
+              href={docsUrl('intro')}
+              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all hover:opacity-90 hover:scale-105 inline-block"
               style={{ background: 'var(--color-accent)', color: 'white' }}
             >
               Start Learning →
-            </Link>
+            </a>
             <Link
               to="/playground"
               className="px-6 py-3 rounded-lg font-semibold text-sm border transition-all hover:bg-white/5"
@@ -80,28 +81,30 @@ export default function Home() {
           Structured courses and interactive exercises for each language
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {LANGUAGES.map((lang) => (
-            <Link
-              key={lang.name}
-              to={lang.path}
-              className="group flex flex-col gap-3 p-5 rounded-xl border transition-all hover:scale-[1.02] hover:border-opacity-80"
-              style={{ background: 'var(--color-surface)', borderColor: 'var(--color-border)' }}
-            >
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl"
-                style={{ background: `${lang.color}20` }}
-              >
-                {lang.icon}
-              </div>
-              <div>
-                <h3 className="font-semibold mb-1" style={{ color: 'var(--color-text)' }}>{lang.name}</h3>
-                <p className="text-xs" style={{ color: 'var(--color-muted)' }}>{lang.desc}</p>
-              </div>
-              <span className="text-xs font-medium mt-auto" style={{ color: lang.color }}>
-                Get started →
-              </span>
-            </Link>
-          ))}
+          {LANGUAGES.map((lang) => {
+            const href = lang.docPath ? docsUrl(lang.docPath) : lang.appPath
+            const Wrapper = lang.docPath ? 'a' : Link
+            const props = lang.docPath
+              ? { href, className: 'group flex flex-col gap-3 p-5 rounded-xl border transition-all hover:scale-[1.02] hover:border-opacity-80', style: { background: 'var(--color-surface)', borderColor: 'var(--color-border)' } }
+              : { to: lang.appPath, className: 'group flex flex-col gap-3 p-5 rounded-xl border transition-all hover:scale-[1.02] hover:border-opacity-80', style: { background: 'var(--color-surface)', borderColor: 'var(--color-border)' } }
+            return (
+              <Wrapper key={lang.name} {...props}>
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-2xl"
+                  style={{ background: `${lang.color}20` }}
+                >
+                  {lang.icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1" style={{ color: 'var(--color-text)' }}>{lang.name}</h3>
+                  <p className="text-xs" style={{ color: 'var(--color-muted)' }}>{lang.desc}</p>
+                </div>
+                <span className="text-xs font-medium mt-auto" style={{ color: lang.color }}>
+                  Get started →
+                </span>
+              </Wrapper>
+            )
+          })}
         </div>
       </section>
 
