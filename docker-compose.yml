@@ -26,8 +26,12 @@ services:
       JWT_SECRET: ${JWT_SECRET:-change_me_in_production}
       AGENT_SERVICE_URL: http://agent-service:8000
       FRONTEND_URL: http://localhost:5173
+      # Playground bind-mount: host path for `docker run -v` (Docker Desktop requirement)
+      EXEC_SANDBOX_HOST_PATH: ${EXEC_SANDBOX_HOST_PATH:-${PWD}/.run-sandbox}
+      EXEC_SANDBOX_CONTAINER_PATH: /run-sandbox
     volumes:
       - ./content:/app/content:ro
+      - ./.run-sandbox:/run-sandbox:rw
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       db:

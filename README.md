@@ -94,6 +94,14 @@ If `docker compose build` or Buildx fails with **500** pulling `moby/buildkit:bu
 3. **Use a `docker`-driver builder:** `docker buildx create --name local --driver docker --use`
 4. **Restart Docker Desktop** if the daemon keeps returning 500.
 
+### Playground: `mounts denied` / path not shared (Docker Desktop)
+
+The backend runs `docker run -v <host-path>:/workspace`. That path must exist on the **Docker host** and be allowed in **Docker Desktop → Settings → Resources → File Sharing**.
+
+Compose mounts `./.run-sandbox` into the backend and sets `EXEC_SANDBOX_HOST_PATH` (default `${PWD}/.run-sandbox`). Run Compose from the project directory so `PWD` is correct. On **Windows**, if it fails, set in `.env`:
+
+`EXEC_SANDBOX_HOST_PATH=C:\\full\\path\\to\\programming-wiki\\.run-sandbox`
+
 ## Features
 
 - **Wiki** — Structured Python and Rust courses in markdown
