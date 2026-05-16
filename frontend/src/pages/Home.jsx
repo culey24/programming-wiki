@@ -2,10 +2,16 @@ import { Link } from 'react-router-dom'
 import { docsUrl } from '../lib/docsUrl.js'
 
 const LANGUAGES = [
-  { name: 'Python', icon: '🐍', color: '#3b82f6', docPath: 'Python/Chapter_1', desc: 'From basics to advanced patterns' },
-  { name: 'Rust', icon: '⚙️', color: '#f97316', docPath: 'Rust/Chapter_0', desc: 'Systems programming done right' },
-  { name: 'JavaScript', icon: '⚡', color: '#eab308', appPath: '/playground', desc: 'The language of the web' },
-  { name: 'C++', icon: '🔧', color: '#8b5cf6', appPath: '/playground', desc: 'High-performance computing' },
+  { name: 'Python', icon: '🐍', color: '#3776ab', docPath: 'Python/Chapter_1', desc: 'Versatile and beginner-friendly' },
+  { name: 'JavaScript', icon: 'JS', color: '#f7df1e', docPath: 'JavaScript/Chapter_1', desc: 'The engine of the web' },
+  { name: 'TypeScript', icon: 'TS', color: '#3178c6', docPath: 'TypeScript/Chapter_1', desc: 'JavaScript with type safety' },
+  { name: 'Rust', icon: '🦀', color: '#dea584', docPath: 'Rust/Chapter_1', desc: 'Safety and performance' },
+  { name: 'Go', icon: 'GO', color: '#00add8', docPath: 'Go/Chapter_1', desc: 'Efficient and concurrent' },
+  { name: 'Swift', icon: 'SW', color: '#f05138', docPath: 'Swift/Chapter_1', desc: 'Modern iOS development' },
+  { name: 'Kotlin', icon: 'KO', color: '#7f52ff', docPath: 'Kotlin/Chapter_1', desc: 'The modern Android standard' },
+  { name: 'Java', icon: '☕', color: '#b07219', docPath: 'Java/Chapter_1', desc: 'Enterprise-grade reliability' },
+  { name: 'PHP', icon: 'PHP', color: '#777bb3', docPath: 'PHP/Chapter_1', desc: 'Server-side power' },
+  { name: 'SQL', icon: 'DB', color: '#336791', docPath: 'SQL/Chapter_1', desc: 'Master data management' },
 ]
 
 const FEATURES = [
@@ -80,7 +86,7 @@ export default function Home() {
         <p className="text-center mb-10 text-sm" style={{ color: 'var(--color-muted)' }}>
           Structured courses and interactive exercises for each language
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {LANGUAGES.map((lang) => {
             const href = lang.docPath ? docsUrl(lang.docPath) : lang.appPath
             const Wrapper = lang.docPath ? 'a' : Link

@@ -69,11 +69,13 @@ const config: Config = {
           href: mainAppUrl,
           label: 'App home',
           position: 'left',
+          target: '_self',
         },
         {
           href: `${mainAppUrl}/playground`,
           label: 'Playground',
           position: 'left',
+          target: '_self',
         },
       ],
     },

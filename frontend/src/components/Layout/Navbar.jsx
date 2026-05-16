@@ -27,7 +27,7 @@ export default function Navbar() {
           className="px-3 py-1.5 rounded-md text-sm font-medium transition-colors hover:text-white"
           style={{ color: 'var(--color-muted)' }}
         >
-          Docs
+          Tutorial
         </a>
         <NavLink
           to="/playground"

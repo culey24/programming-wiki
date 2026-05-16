@@ -1,139 +1,113 @@
-# 4. Kiểm tra điều kiện
+# Chapter 4: Conditional Tests
 
-## 1. Giới thiệu về Kiểm tra điều kiện
+## 1. Introduction to Conditional Tests
 
-Trọng tâm của mọi câu lệnh `if` là một biểu thức có thể được đánh giá là **True** (Đúng) hoặc **False** (Sai). Biểu thức này được gọi là một **Conditional Test** (Kiểm tra điều kiện).
+At the heart of every `if` statement is an expression that can be evaluated as **True** or **False**. This expression is called a **Conditional Test**.
 
-## 2. Kiểm tra sự bằng nhau (Equality)
+## 2. Checking for Equality
 
-Để kiểm tra xem giá trị của một biến có bằng một giá trị cụ thể hay không, ta sử dụng toán tử bằng **(`==`)**.
+To check whether the value of a variable is equal to a specific value, use the equality operator **(`==`)**.
 
-> **Lưu ý quan trọng:** Đừng nhầm lẫn giữa một dấu bằng (`=`) và hai dấu bằng (`==`).
+> **Important:** Don’t confuse a single equals sign (`=`) with a double equals sign (`==`).
 > 
-> - `=` là lệnh gán: "Gán giá trị của car bằng 'audi'".
->     
-> - `==` là một câu hỏi: "Giá trị của car có bằng 'bmw' không?".
->     
+> - `=` is an assignment: "Set the value of car to 'audi'".
+> - `==` is a question: "Is the value of car equal to 'bmw'?".
 
-```Python
+```python
 car = 'bmw'
-print(car == 'bmw')  # Kết quả: True
+print(car == 'bmw')  # Output: True
 
 car = 'audi'
-print(car == 'bmw')  # Kết quả: False
+print(car == 'bmw')  # Output: False
 ```
 
-### Bỏ qua sự phân biệt chữ hoa chữ thường
+### Case Sensitivity
 
-Trong Python, việc kiểm tra sự bằng nhau có phân biệt chữ hoa và chữ thường.
+In Python, equality testing is case-sensitive.
 
-```Python
+```python
 car = 'Audi'
-print(car == 'audi') # Kết quả: False
+print(car == 'audi') # Output: False
 ```
 
-Nếu muốn kiểm tra mà không quan tâm đến định dạng chữ, hãy sử dụng phương thức `.lower()`:
+To check for equality regardless of case, use the `.lower()` method:
 
-```Python
+```python
 car = 'Audi'
-print(car.lower() == 'audi') # Kết quả: True
+print(car.lower() == 'audi') # Output: True
 ```
 
-> **Lưu ý**: Phương thức `.lower()` không làm thay đổi giá trị gốc được lưu trong biến.
+## 3. Checking for Inequality
 
-## 3. Kiểm tra sự không bằng nhau (Inequality)
+To check whether two values are not equal, use the inequality operator **(`!=`)**.
 
-Để kiểm tra xem hai giá trị có khác nhau hay không, ta sử dụng toán tử **(`!=`)**.
-
-```Python
+```python
 requested_topping = 'mushrooms'
 
 if requested_topping != 'anchovies':
     print("Hold the anchovies!")
 ```
 
-- Kết quả: Python so sánh 'mushrooms' với 'anchovies'. Vì chúng không khớp nhau, biểu thức trả về `True` và thực thi lệnh `print`.
+## 4. Numerical Comparisons
 
-## 4. So sánh các giá trị số (Numerical Comparisons)
+Checking numerical values is straightforward. You can use the following mathematical operators:
 
-Việc kiểm tra các giá trị số rất trực quan. Ta có thể sử dụng các toán tử toán học sau:
+- `==` (Equal)
+- `!=` (Not equal)
+- `<` (Less than)
+- `<=` (Less than or equal to)
+- `>` (Greater than)
+- `>=` (Greater than or equal to)
 
-- `==` (Bằng)
-    
-- `!=` (Khác)
-    
-- `<` (Nhỏ hơn)
-    
-- `<=` (Nhỏ hơn hoặc bằng)
-    
-- `>` (Lớn hơn)
-    
-- `>=` (Lớn hơn hoặc bằng)
-
-
-```Python
+```python
 age = 18
 print(age == 18) # True
 
 answer = 17
 if answer != 42:
     print("That is not the correct answer. Please try again!")
-
-age = 19
-print(age < 21)  # True
-print(age <= 21) # True
-print(age > 21)  # False
-print(age >= 21) # False
 ```
 
-## 5. Kiểm tra nhiều điều kiện cùng lúc
+## 5. Checking Multiple Conditions
 
-Đôi khi ta cần kiểm tra nhiều điều kiện đồng thời bằng cách sử dụng các từ khóa `and` và `or`.
+You can check multiple conditions simultaneously using the `and` and `or` keywords.
 
-### Sử dụng `and` (VÀ)
+### Using `and`
 
-Để biểu thức tổng quát là `True`, **tất cả** các điều kiện thành phần phải cùng đúng. Nếu một trong hai sai, kết quả sẽ là `False`.
+For the overall expression to be `True`, **all** individual conditions must be true.
 
-```Python
+```python
 age_0 = 22
 age_1 = 18
-print(age_0 >= 21 and age_1 >= 21) # Kết quả: False (vì age_1 < 21)
-
-age_1 = 22
-print(age_0 >= 21 and age_1 >= 21) # Kết quả: True (cả hai đều >= 21)
+print(age_0 >= 21 and age_1 >= 21) # Output: False (because age_1 < 21)
 ```
 
-### Sử dụng `or` (HOẶC)
+### Using `or`
 
-Biểu thức sẽ trả về `True` nếu **ít nhất một** trong các điều kiện thành phần là đúng. Nó chỉ trả về `False` khi tất cả các điều kiện đều sai.
+The expression returns `True` if **at least one** of the individual conditions is true.
 
-
-```Python
+```python
 age_0 = 22
 age_1 = 18
-print(age_0 >= 21 or age_1 >= 21) # Kết quả: True (vì age_0 thỏa mãn)
-
-age_0 = 18
-print(age_0 >= 21 or age_1 >= 21) # Kết quả: False (cả hai đều sai)
+print(age_0 >= 21 or age_1 >= 21) # Output: True (because age_0 satisfies it)
 ```
 
-## 6. Kiểm tra giá trị trong danh sách (List)
+## 6. Checking Whether a Value Is in a List
 
-### Kiểm tra sự tồn tại với `in`
+### Using `in`
 
-Sử dụng từ khóa `in` để biết một giá trị cụ thể đã có trong danh sách hay chưa.
+Use the `in` keyword to see if a specific value is already in a list.
 
-```Python
+```python
 requested_toppings = ['mushrooms', 'onions', 'pineapple']
 print('mushrooms' in requested_toppings) # True
-print('pepperoni' in requested_toppings) # False
 ```
 
-### Kiểm tra sự không tồn tại với `not in`
+### Using `not in`
 
-Sử dụng `not in` để kiểm tra nếu một giá trị không xuất hiện trong danh sách.
+Use `not in` to check if a value does not appear in a list.
 
-```Python
+```python
 banned_users = ['andrew', 'carolina', 'david']
 user = 'marie'
 
@@ -141,50 +115,36 @@ if user not in banned_users:
     print(f"{user.title()}, you can post a response if you wish.")
 ```
 
-# Cấu trúc Điều kiện trong Python (If Statements)
+---
 
-## 1. Câu lệnh `if` đơn giản (Simple if Statements)
+# IF STATEMENTS
 
-```Python
+## 1. Simple `if` Statements
+
+```python
 if conditional_test:
-	do something
+    do something
 ```
 
-- Thụt lề (indentation) đóng vai trò cực kỳ quan trọng. Mọi dòng code được thụt lề sau câu lệnh `if` sẽ được thực thi nếu điều kiện là `True`.
+Indentation is crucial. Every line indented after the `if` statement will be executed if the condition is `True`.
 
-```Python
-age = 19
-if age >= 18:
-    print("You are old enough to vote!")
-    print("Have you registered to vote yet?")
-```
+## 2. `if-else` Statements
 
-## 2. Câu lệnh `if-else`
+Use this when you want to take one action if a condition passes and another action if it fails.
 
-Sử dụng khi muốn thực hiện một hành động khi điều kiện vượt qua và một hành động khác khi điều kiện thất bại.
-
-```Python
+```python
 age = 17
 if age >= 18:
     print("You are old enough to vote!")
 else:
     print("Sorry, you are too young to vote.")
-    print("Please register to vote as soon as you turn 18!")
 ```
 
-## 3. Chuỗi `if-elif-else` (The if-elif-else Chain)
+## 3. The `if-elif-else` Chain
 
-Sử dụng khi có nhiều hơn hai tình huống cần xử lý. Python sẽ chạy các điều kiện theo thứ tự từ trên xuống dưới cho đến khi tìm thấy điều kiện đúng. Khi một điều kiện đã thỏa mãn, các khối còn lại sẽ bị bỏ qua.
+Use this when you have more than two situations to handle. Python runs each condition in order until it finds one that is true.
 
-**Ví dụ: Giá vé công viên theo độ tuổi**
-
-- Dưới 4 tuổi: Miễn phí ($0).
-    
-- Từ 4 đến 18 tuổi: $25.
-    
-- Từ 18 tuổi trở lên: $40.
-
-```Python
+```python
 age = 12
 
 if age < 4:
@@ -197,80 +157,34 @@ else:
 print(f"Your admission cost is ${price}.")
 ```
 
-## 4. Sử dụng nhiều khối `elif`
+## 4. Omitting the `else` Block
 
-Ta có thể sử dụng bao nhiêu khối `elif` tùy thích trong một chuỗi.
+The `else` block is a catch-all. For safety and clarity, you can replace `else` with a specific `elif` block.
 
-**Ví dụ:** Thêm mức giá ưu đãi cho người cao tuổi (từ 65 tuổi trở lên trả $20).
-
-```Python
-age = 12
-
+```python
 if age < 4:
     price = 0
 elif age < 18:
     price = 25
 elif age < 65:
     price = 40
-else:
+elif age >= 65: # Specific condition instead of else
     price = 20
-
-print(f"Your admission cost is ${price}.")
 ```
 
-## 5. Bỏ qua khối `else` (Omitting the else Block)
+## 5. Testing Multiple Conditions
 
-Khối `else` là một "chiếc lưới" bắt tất cả mọi trường hợp không khớp với các điều kiện trên. Tuy nhiên, đôi khi nó có thể bao hàm cả những dữ liệu không hợp lệ hoặc không mong muốn. Để an toàn và rõ ràng hơn, bạn có thể thay `else` bằng một khối `elif` cụ thể.
+The `if-elif-else` chain is only appropriate when you **only need one** condition to pass. If you want to check and act on **all** conditions that are met, use independent `if` statements.
 
+---
 
-```Python
-if age < 4:
-    price = 0
-elif age < 18:
-    price = 25
-elif age < 65:
-    price = 40
-elif age >= 65: # Thay thế else bằng điều kiện cụ thể
-    price = 20
+# USING IF STATEMENTS WITH LISTS
 
-print(f"Your admission cost is ${price}.")
-```
+## 1. Checking for Special Items
 
-> **Lợi ích:** Bạn sẽ tự tin hơn vì code chỉ chạy dưới những điều kiện chính xác mà bạn đã xác định.
+You can use a `for` loop to check for special items within a list and handle them accordingly.
 
-
-## 6. Kiểm tra nhiều điều kiện (Testing Multiple Conditions)
-
-Chuỗi `if-elif-else` chỉ phù hợp khi bạn **chỉ cần một** điều kiện thỏa mãn. Nếu muốn kiểm tra và thực hiện **tất cả** các điều kiện thỏa mãn, hãy sử dụng các câu lệnh `if` độc lập.
-
-**Ví dụ: Chọn topping cho Pizza**
-
-```Python
-requested_toppings = ['mushrooms', 'extra cheese']
-
-if 'mushrooms' in requested_toppings:
-    print("Adding mushrooms.")
-if 'pepperoni' in requested_toppings:
-    print("Adding pepperoni.")
-if 'extra cheese' in requested_toppings:
-    print("Adding extra cheese.")
-
-print("\nFinished making your pizza!")
-```
-
-Tại sao không dùng elif ở đây?
-
-Nếu dùng elif, ngay khi Python tìm thấy 'mushrooms', nó sẽ bỏ qua tất cả các lựa chọn topping còn lại, dẫn đến việc thiếu toppings của khách hàng.
-
-# Sử dụng câu lệnh `if` với Danh sách (Lists)
-
-## 1. Kiểm tra các phần tử đặc biệt (Checking for Special Items)
-
-Thông thường, chúng ta sử dụng vòng lặp `for` để duyệt qua tất cả các phần tử trong danh sách. Tuy nhiên, đôi khi bạn cần xử lý một số phần tử theo cách riêng.
-
-**Ví dụ:** Một cửa hàng pizza đang chuẩn bị đơn hàng. Nếu cửa hàng hết một loại nguyên liệu nào đó (ví dụ: ớt chuông xanh), chúng ta cần thông báo cho khách hàng thay vì chỉ thêm nó vào một cách bình thường.
-
-```Python
+```python
 requested_toppings = ['mushrooms', 'green peppers', 'extra cheese']
 
 for requested_topping in requested_toppings:
@@ -278,70 +192,33 @@ for requested_topping in requested_toppings:
         print("Sorry, we are out of green peppers right now.")
     else:
         print(f"Adding {requested_topping}.")
-
-print("\nFinished making your pizza!")
 ```
 
-``` 
-# Kết quả
-Adding mushrooms.
-Sorry, we are out of green peppers right now.
-Adding extra cheese.
+## 2. Checking That a List Is Not Empty
 
-Finished making your pizza!
-```
-## 2. Kiểm tra danh sách không rỗng (Checking That a List Is Not Empty)
+In Python, an empty list returns `False` when placed in a conditional test.
 
-Trước khi thực hiện các thao tác với danh sách, đôi khi chúng ta cần đảm bảo rằng danh sách đó thực sự có chứa dữ liệu. Trong Python, một danh sách trống sẽ trả về giá trị `False` khi được đặt trong một điều kiện kiểm tra.
-
-**Ví dụ:** Nếu khách hàng chưa chọn bất kỳ loại topping nào, chúng ta nên hỏi xác nhận xem họ có muốn một chiếc pizza không nhân hay không.
-
-```Python
+```python
 requested_toppings = []
 
 if requested_toppings:
-    for requested_topping in requested_toppings:
-        print(f"Adding {requested_topping}.")
-    print("\nFinished making your pizza!")
+    # Perform actions if list is not empty
+    pass
 else:
     print("Are you sure you want a plain pizza?")
 ```
 
-```
-# Kết quả 
-Are you sure you want a plain pizza?
-```
+## 3. Using Multiple Lists
 
-> **Lưu ý:** Khi tên của một danh sách được sử dụng trong câu lệnh `if`, Python sẽ trả về `True` nếu danh sách có ít nhất một phần tử và `False` nếu danh sách rỗng.
+You can check values from one list against another.
 
-## 3. Sử dụng nhiều danh sách (Using Multiple Lists)
-
-Trong các bài toán thực tế, ta thường phải đối chiếu dữ liệu giữa hai danh sách khác nhau. 
-
-**Ví dụ:** Kiểm tra xem các yêu cầu của khách hàng có nằm trong danh sách nguyên liệu có sẵn hay không.
-
-```Python
-available_toppings = ['mushrooms', 'olives', 'green peppers', 
-                      'pepperoni', 'pineapple', 'extra cheese']
-
-requested_toppings = ['mushrooms', 'french fries', 'extra cheese']
+```python
+available_toppings = ['mushrooms', 'olives', 'green peppers', 'pepperoni']
+requested_toppings = ['mushrooms', 'french fries']
 
 for requested_topping in requested_toppings:
     if requested_topping in available_toppings:
         print(f"Adding {requested_topping}.")
     else:
         print(f"Sorry, we don't have {requested_topping}.")
-
-print("\nFinished making your pizza!")
 ```
-
-```
-# Kết quả 
-Adding mushrooms.
-Sorry, we don't have french fries.
-Adding extra cheese.
-
-Finished making your pizza!
-```
-
-> **Lưu ý sử dụng Tuple:** Danh sách `available_toppings` có thể được khai báo dưới dạng một **tuple** nếu cửa hàng có một danh sách nguyên liệu cố định và không thay đổi.

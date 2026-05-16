@@ -5,6 +5,7 @@ import Playground from './pages/Playground.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AiTutor from './components/AiTutor/AiTutor.jsx'
+import SelectionTutor from './components/AiTutor/SelectionTutor.jsx'
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         </Route>
       </Routes>
       <AiTutor />
+      <SelectionTutor />
     </>
   )
 }

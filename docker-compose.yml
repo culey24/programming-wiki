@@ -63,9 +63,10 @@ services:
         MAIN_APP_URL: http://localhost:5173
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3002:3002"
     environment:
       MAIN_APP_URL: http://localhost:5173
+      PORT: 3002
 
   frontend:
     build:
@@ -76,7 +77,7 @@ services:
       - "5173:5173"
     environment:
       VITE_DEV_BACKEND: http://backend:3001
-      VITE_DOCS_URL: http://localhost:3000
+      VITE_DOCS_URL: http://localhost:3002
     depends_on:
       backend:
         condition: service_started

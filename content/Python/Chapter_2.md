@@ -1,285 +1,271 @@
-# 2. Danh sách là gì
+# Chapter 2: Lists
 
-Trong Python, một **List** là một tập hợp các mục (items) được sắp xếp theo một thứ tự cụ thể.
+In Python, a **List** is a collection of items in a particular order.
 
-- Ta có thể tạo một danh sách chứa các chữ cái, các con số từ 0 đến 9, hoặc tên của tất cả các thành viên trong gia đình mình.
+- You can create a list containing letters, numbers from 0 to 9, or names of all your family members.
+- You can put anything you want into a list, and the items in your list don’t have to be related in any particular way.
 
-- Có thể đưa bất cứ thứ gì mình muốn vào một danh sách, và các mục trong đó không nhất thiết phải có mối liên hệ nào với nhau.
+## 1. Defining a List
 
-## 1. Cách khai báo một List
+In Python, square brackets `[]` indicate a list, and individual elements in the list are separated by **commas**.
 
-Trong Python, dấu ngoặc vuông `[]` được dùng để biểu thị một danh sách, và các phần tử riêng lẻ trong danh sách được ngăn cách với nhau bằng **dấu phẩy**.
+> **Tip:** Because a list usually contains more than one element, it’s a good idea to make the name of your list **plural** (e.g., `letters`, `digits`, or `names`).
 
-> **Mẹo nhỏ:** Vì một danh sách thường chứa nhiều hơn một phần tử, bạn nên đặt tên biến ở dạng **số nhiều** (ví dụ: `letters`, `digits`, hoặc `names`).
-
-```Python
+```python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 print(bicycles)
 ```
 
-- Khi yêu cầu Python in một danh sách, nó sẽ trả về đại diện của danh sách đó bao gồm cả dấu ngoặc vuông:
+- When you ask Python to print a list, it returns its representation, including the square brackets:
 ```
 ['trek', 'cannondale', 'redline', 'specialized']
 ```
-## 2. Truy cập các phần tử trong List
 
-Vì danh sách là một tập hợp có thứ tự, ta có thể truy cập bất kỳ phần tử nào bằng cách cho Python biết vị trí (**index**) của mục đó. Để truy cập một phần tử, hãy viết tên danh sách, sau đó là chỉ số index được đặt trong **dấu ngoặc vuông**.
+## 2. Accessing Elements in a List
 
-```Python
+Lists are ordered collections, so you can access any element in a list by telling Python the position, or **index**, of the item desired. To access an element in a list, write the name of the list followed by the index of the item enclosed in **square brackets**.
+
+```python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
 print(bicycles[0])
 
-# Kết quả: trek
+# Output: trek
 ```
 
-> Lưu ý: Khi truy cập một phần tử đơn lẻ, Python chỉ trả về giá trị của phần tử đó mà không kèm theo dấu ngoặc vuông.
+> **Note:** When you ask for a single item from a list, Python returns just that element without square brackets.
 
-### Kết hợp với các phương thức chuỗi
+### Using String Methods on List Elements
 
-Bạn có thể sử dụng các phương thức xử lý chuỗi (như `title()`, `upper()`, `lower()`) trên bất kỳ phần tử nào trong danh sách.
+You can use string methods (like `title()`, `upper()`, `lower()`) on any element in a list.
 
-```Python
-print(bicycles[0].title()) # Kết quả: Trek
+```python
+print(bicycles[0].title()) # Output: Trek
 ```
 
-## 3. Vị trí Index bắt đầu từ 0, không phải 1
+## 3. Index Positions Start at 0, Not 1
 
-Trong Python (và hầu hết các ngôn ngữ lập trình khác), phần tử đầu tiên trong danh sách được coi là ở **vị trí 0**, không phải vị trí 1.    
+In Python (and most other programming languages), the first element in a list is at **position 0**, not position 1.
 
-```Python
-
+```python
 bicycles = ['trek', 'cannondale', 'redline', 'specialized']
-print(bicycles[1]) # Trả về phần tử thứ hai: cannondale
-print(bicycles[3]) # Trả về phần tử thứ tư: specialized
+print(bicycles[1]) # Returns the second item: cannondale
+print(bicycles[3]) # Returns the fourth item: specialized
 ```
 
-### Chỉ số Index âm (Truy cập từ cuối danh sách)
+### Negative Indexes (Accessing from the End)
 
-Python cung cấp một cú pháp đặc biệt để truy cập phần tử cuối cùng của danh sách bằng cách sử dụng chỉ số **-1**.
+Python has a special syntax for accessing the last element in a list by using index **-1**.
 
-- Index `-1`: Trả về phần tử cuối cùng.
+- Index `-1`: Returns the last item.
+- Index `-2`: Returns the second item from the end.
+- Index `-3`: Returns the third item from the end.
 
-- Index `-2`: Trả về phần tử thứ hai tính từ cuối lên.
-
-- Index `-3`: Trả về phần tử thứ ba tính từ cuối lên.
-
-```Python
-print(bicycles[-1]) # Kết quả: specialized
+```python
+print(bicycles[-1]) # Output: specialized
 ```
 
-_Cú pháp này cực kỳ hữu ích khi muốn lấy phần tử cuối cùng mà không cần biết chính xác danh sách dài bao nhiêu._
+*This syntax is quite useful when you want to get the last element without knowing exactly how long the list is.*
 
 ---
-## THAY ĐỔI, THÊM VÀ XÓA CÁC PHẦN TỬ TRONG LIST
 
-Hầu hết các danh sách tạo ra sẽ mang tính **năng động (dynamic)**. Điều này có nghĩa sau khi xây dựng một danh sách, có thể thêm hoặc xóa các phần tử khi chương trình chạy (ví dụ: thêm quái vật mới vào trò chơi hoặc xóa người dùng khi họ hủy tài khoản).
+## MODIFYING, ADDING, AND REMOVING ELEMENTS
 
-## 1. Thay đổi phần tử trong List (Modifying Elements)
+Most lists you create will be **dynamic**. This means you’ll build a list and then add and remove elements as your program runs (e.g., adding new monsters to a game or removing users when they cancel their accounts).
 
-Cú pháp để thay đổi một phần tử tương tự như cú pháp truy cập phần tử đó. 
+## 1. Modifying Elements in a List
 
-- Sử dụng tên danh sách kèm theo chỉ số (index) của phần tử muốn thay đổi, sau đó gán giá trị mới.
-```Python
+The syntax for modifying an element is similar to the syntax for accessing an element.
+
+- Use the name of the list followed by the index of the element you want to change, and then provide the new value.
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
 print(motorcycles)
 
-# Thay đổi phần tử đầu tiên thành 'ducati'
+# Changing the first element to 'ducati'
 motorcycles[0] = 'ducati'
 print(motorcycles)
 ```
+Output:
 ```
-# Kết quả
 ['honda', 'yamaha', 'suzuki']
-
-['ducati', 'yamaha', 'suzuki'] (Phần tử đầu tiên đã bị thay thế).
+['ducati', 'yamaha', 'suzuki']
 ```
 
-## 2. Thêm phần tử vào List (Adding Elements)
+## 2. Adding Elements to a List
 
-Python cung cấp nhiều cách để thêm dữ liệu mới vào một danh sách hiện có.
+Python provides several ways to add new data to an existing list.
 
-### Thêm vào cuối danh sách với `append()`
+### Appending Elements to the End with `append()`
 
-Phương pháp đơn giản nhất là dùng `.append()`, nó sẽ đưa phần tử mới vào vị trí cuối cùng.
+The simplest way to add a new element to a list is to `.append()` the item, which adds it to the end of the list.
 
-``` Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
 motorcycles.append('ducati')
 print(motorcycles)
-# Kết quả: ['honda', 'yamaha', 'suzuki', 'ducati']
+# Output: ['honda', 'yamaha', 'suzuki', 'ducati']
 ```
 
-Ta cũng có thể bắt đầu với một danh sách trống và thêm dần các phần tử:
-```Python
+You can also start with an empty list and add elements one by one:
+```python
 motorcycles = []
 motorcycles.append('honda')
 motorcycles.append('yamaha')
 motorcycles.append('suzuki')
 print(motorcycles)
 
-# Kết quả: ['honda', 'yamaha', 'suzuki']
+# Output: ['honda', 'yamaha', 'suzuki']
 ```
 
-### Chèn phần tử vào vị trí bất kỳ với `insert()`
+### Inserting Elements into a List with `insert()`
 
-Thêm một phần tử mới vào bất kỳ vị trí nào bằng cách dùng `insert()` và chỉ định **chỉ số (index)** và **giá trị**. Phương pháp này sẽ đẩy các phần tử còn lại sang bên phải.
+You can add a new element at any position in your list by using the `insert()` method. You do this by specifying the **index** and the **value**. This shifts the rest of the elements to the right.
 
-```Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
 motorcycles.insert(0, 'ducati')
 print(motorcycles)
-# Kết quả: ['ducati', 'honda', 'yamaha', 'suzuki']
+# Output: ['ducati', 'honda', 'yamaha', 'suzuki']
 ```
 
-## 3. Xóa phần tử khỏi List (Removing Elements)
+## 3. Removing Elements from a List
 
-Tùy vào nhu cầu (biết vị trí hay biết giá trị), có các cách xóa sau:
+Depending on whether you know the position or the value, there are several ways to remove items:
 
-### Sử dụng câu lệnh `del` (Biết vị trí)
+### Using the `del` Statement (By Position)
 
-Nếu biết rõ vị trí của phần tử cần xóa và **không cần dùng lại** giá trị đó sau khi xóa.
+If you know the position of the item you want to remove and **don't need to use** the value after removing it.
 
-```Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
-del motorcycles[0] # Xóa phần tử đầu tiên
+del motorcycles[0] # Removes the first element
 print(motorcycles)
-# Kết quả: ['yamaha', 'suzuki']
+# Output: ['yamaha', 'suzuki']
 ```
 
-### Sử dụng phương thức `pop()` (Xóa và lấy giá trị)
+### Using the `pop()` Method (Remove and Use)
 
-Phương thức `.pop()` xóa phần tử cuối cùng khỏi danh sách, nhưng nó **trả về (return)** giá trị đó để bạn có thể tiếp tục sử dụng.
+The `.pop()` method removes the last item in a list, but it **returns** that value so you can still use it.
 
-```Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
 popped_motorcycle = motorcycles.pop()
-print(motorcycles)        # Kết quả: ['honda', 'yamaha']
-print(popped_motorcycle) # Kết quả: suzuki
+print(motorcycles)        # Output: ['honda', 'yamaha']
+print(popped_motorcycle) # Output: suzuki
 ```
-#### Sử dụng phương thức`.pop(index)` 
 
-Dùng .pop(index) để  xóa ở vị trí và lấy ra bất kỳ phần tử nào.
+#### Using `.pop(index)` 
 
-```Python
+You can use `pop()` to remove an item from any position in a list by including the index of the item you want to remove in parentheses.
+
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki']
 first_owned = motorcycles.pop(0)
 print(f"The first motorcycle I owned was a {first_owned.title()}.")
-# Kết quả: The first motorcycle I owned was a Honda.
+# Output: The first motorcycle I owned was a Honda.
 ```
 
-> **Lưu ý:** Khi nào dùng `del` và khi nào dùng `pop()`?
+> **Note:** When should you use `del` and when should you use `pop()`?
 > 
-> - Dùng **`del`**: Khi muốn xóa hẳn và không dùng đến phần tử đó nữa.
->     
-> - Dùng **`pop()`**: Khi muốn xóa nhưng vẫn cần dùng lại giá trị vừa xóa.
->     
+> - Use **`del`**: When you want to delete an item and not use it in any way.
+> - Use **`pop()`**: When you want to remove an item but still use its value.
 
-### Xóa phần tử theo giá trị với `remove()`
+### Removing an Item by Value with `remove()`
 
-Nếu không biết vị trí nhưng biết **giá trị** của phần tử cần xóa.
+If you don't know the position but you know the **value** of the item you want to remove.
 
-```Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
 motorcycles.remove('ducati')
 print(motorcycles)
-# Kết quả: ['honda', 'yamaha', 'suzuki']
+# Output: ['honda', 'yamaha', 'suzuki']
 ```
 
-Cũng có thể lưu giá trị vào biến trước khi xóa để in thông báo:
+You can also use a variable to store the value before removing it:
 
-```Python
+```python
 motorcycles = ['honda', 'yamaha', 'suzuki', 'ducati']
 too_expensive = 'ducati'
 motorcycles.remove(too_expensive)
 print(f"\nA {too_expensive.title()} is too expensive for me.")
 ```
 
-> **Ghi chú quan trọng:** Phương thức `remove()` chỉ xóa **lần xuất hiện đầu tiên** của giá trị đó. Nếu giá trị xuất hiện nhiều lần, cần sử dụng vòng lặp.
-
----
-Chào bạn, đây là nội dung bài soạn lý thuyết về chủ đề **"Organizing a List" (Tổ chức một danh sách)** trong Python, được tổng hợp đầy đủ và bám sát theo các ví dụ từ tài liệu bạn đã cung cấp.
+> **Important Note:** The `remove()` method deletes only the **first occurrence** of the value you specify. If the value appears more than once, you’ll need to use a loop.
 
 ---
 
-# TỔ CHỨC VÀ SẮP XẾP DANH SÁCH (ORGANIZING A LIST)
+# ORGANIZING A LIST
 
-Thông thường, các danh sách (list) được tạo ra sẽ có thứ tự không thể dự đoán trước được. Tuy nhiên, trong quá trình lập trình, chúng ta thường cần trình bày dữ liệu theo một thứ tự nhất định. Python cung cấp nhiều cách để sắp xếp danh sách tùy thuộc vào tình huống cụ thể.
+Often, your lists will be created in an unpredictable order. However, you'll often want to present your data in a particular order. Python provides several ways to organize your lists.
 
-## 1. Sắp xếp danh sách vĩnh viễn với phương thức `sort()`
+## 1. Sorting a List Permanently with the `sort()` Method
 
-Phương thức `sort()` giúp việc sắp xếp danh sách trở nên dễ dàng. Nó thay đổi thứ tự của danh sách **vĩnh viễn** (không thể khôi phục lại thứ tự ban đầu).
+The `sort()` method makes it relatively easy to sort a list. It changes the order of the list **permanently**.
 
-- **Sắp xếp theo thứ tự bảng chữ cái:**
+- **Sorting Alphabetically:**
 
-```Python
+```python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
 cars.sort()
 print(cars)
-# Kết quả: ['audi', 'bmw', 'subaru', 'toyota']
+# Output: ['audi', 'bmw', 'subaru', 'toyota']
 ```
 
-- Sắp xếp theo thứ tự ngược bảng chữ cái:
+- **Sorting in Reverse Alphabetical Order:**
 
-	-  Chỉ cần truyền thêm đối số reverse=True vào phương thức sort().
+	- Pass the argument `reverse=True` to the `sort()` method.
 
-```Python
+```python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
 cars.sort(reverse=True)
 print(cars)
-# Kết quả: ['toyota', 'subaru', 'bmw', 'audi']
+# Output: ['toyota', 'subaru', 'bmw', 'audi']
 ```
 
+## 2. Sorting a List Temporarily with the `sorted()` Function
 
-## 2. Sắp xếp danh sách tạm thời với hàm `sorted()`
+To maintain the original order of a list but present it in a sorted order, use the `sorted()` function. This function lets you display your list in a particular order but **doesn’t affect** the actual order of the list.
 
-Để duy trì thứ tự gốc của danh sách nhưng hiển thị nó theo một thứ tự sắp xếp nhất định, ta sử dụng hàm `sorted()`. Hàm này cho phép bạn hiển thị danh sách theo thứ tự nhưng **không ảnh hưởng** đến thứ tự thực tế của danh sách đó.
-
-
-```Python
+```python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
 
 print(cars)
-# Kết quả: ['bmw', 'audi', 'toyota', 'subaru']
+# Output: ['bmw', 'audi', 'toyota', 'subaru']
 
 print(sorted(cars))
-# Kết quả: ['audi', 'bmw', 'subaru', 'toyota']
+# Output: ['audi', 'bmw', 'subaru', 'toyota']
 
 print(cars)
-# Kết quả: ['bmw', 'audi', 'toyota', 'subaru']
-
+# Output: ['bmw', 'audi', 'toyota', 'subaru']
 ```
 
-> **Lưu ý:** Hàm `sorted()` cũng có thể nhận đối số `reverse=True` nếu bạn muốn hiển thị danh sách theo thứ tự ngược bảng chữ cái.
+> **Note:** The `sorted()` function can also accept a `reverse=True` argument.
 
+> **Note on Case Sensitivity:** Sorting is different if the list contains capitalized characters. In ASCII, uppercase letters always come before lowercase letters.
 
-> **Ghi chú về chữ hoa/thường:** Việc sắp xếp sẽ khác nếu danh sách có chứa các ký tự viết hoa. Vì trong bảng ASCII thì số thứ tự của chữ hoa luôn nhỏ hơn số thứ tự của chữ thường, do đó chữ hoa luôn đứng trước chữ thường khi dùng phương thức `sort()` hay `sorted()`.
-> 	- **Các chữ cái VIẾT HOA** (A-Z) có giá trị từ **65 đến 90**.
-> 	- **Các chữ cái viết thường** (a-z) có giá trị từ **97 đến 122**.
+## 3. Reversing the Order of a List with the `reverse()` Method
 
-## 3. Đảo ngược thứ tự danh sách với phương thức `reverse()`
+To reverse the original order of a list, you can use the `reverse()` method. Note that `reverse()` **doesn’t sort** alphabetically backward; it simply reverses the order of the items in the list.
 
-Để đảo ngược thứ tự ban đầu của một danh sách, có thể dùng phương thức `reverse()`. Cần lưu ý rằng `reverse()` **không sắp xếp** theo bảng chữ cái ngược, nó chỉ đơn giản là đảo ngược vị trí các phần tử từ cuối lên đầu.
-
-```Python
+```python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
 print(cars)
 
 cars.reverse()
 print(cars)
-# Kết quả: ['subaru', 'toyota', 'audi', 'bmw']
+# Output: ['subaru', 'toyota', 'audi', 'bmw']
 ```
 
-- **Đặc điểm:** Phương thức này thay đổi thứ tự danh sách vĩnh viễn, nhưng ta có thể quay lại thứ tự ban đầu bất cứ lúc nào bằng cách gọi lại `reverse()` một lần nữa trên danh sách đó.
+- **Note:** This method changes the order permanently, but you can revert to the original order by calling `reverse()` again on the same list.
 
-## 4. Tìm độ dài của danh sách với hàm `len()`
+## 4. Finding the Length of a List with the `len()` Function
 
-Tìm ra số lượng phần tử có trong một danh sách bằng cách sử dụng hàm `len()`.
+You can find the number of items in a list by using the `len()` function.
 
-```Python
+```python
 cars = ['bmw', 'audi', 'toyota', 'subaru']
 len(cars)
-# Kết quả: 4
+# Output: 4
 ```
 
-
-> Lưu ý: Python bắt đầu đếm các phần tử trong danh sách từ **1**, vì vậy sẽ không gặp lỗi "off-by-one" khi xác định độ dài danh sách.
+> **Note:** Python counts the items in a list starting with **1**, so you shouldn’t run into any off-by-one errors when determining the length of a list.

@@ -44,7 +44,7 @@ cp agent-service/.env.example agent-service/.env
 
 ### 3. Run locally (without Compose)
 
-Wiki docs are served by **Docusaurus** on port **3000**; the React app (playground, auth, AI tutor) is on **5173**.
+Wiki docs are served by **Docusaurus** on port **3002**; the React app (playground, auth, AI tutor) is on **5173**.
 
 ```bash
 docker compose up db -d   # or any Postgres on DATABASE_URL
@@ -56,19 +56,19 @@ cd backend && npm install && npm run dev
 cd agent-service && pip install -r requirements.txt && uvicorn main:app --reload
 
 # Terminal 3 — Docusaurus docs (wiki)
-cd docs-site && npm install && npm start    # http://localhost:3000
+cd docs-site && npm install && npm start    # http://localhost:3002
 
 # Terminal 4 — React app
 cd frontend && npm install && npm run dev   # http://localhost:5173
 ```
 
-Optional: set `VITE_DOCS_URL` if Docusaurus is not on `http://localhost:3000` (used for “Docs” links in the navbar).
+Optional: set `VITE_DOCS_URL` if Docusaurus is not on `http://localhost:3002` (used for "Docs" links in the navbar).
 
-Open the app at [http://localhost:5173](http://localhost:5173) and docs at [http://localhost:3000/docs/intro](http://localhost:3000/docs/intro).
+Open the app at [http://localhost:5173](http://localhost:5173) and docs at [http://localhost:3002/docs/intro](http://localhost:3002/docs/intro).
 
 ### Docker Compose (stack in containers)
 
-From the repo root, Compose starts **Postgres**, **backend**, **agent-service**, **docs-site** (Docusaurus, port 3000), and **frontend** (port 5173):
+From the repo root, Compose starts **Postgres**, **backend**, **agent-service**, **docs-site** (Docusaurus, port 3002), and **frontend** (port 5173):
 
 ```bash
 # One-time: sandbox images for the code playground (on the host Docker daemon)

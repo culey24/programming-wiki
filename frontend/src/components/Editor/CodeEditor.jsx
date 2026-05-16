@@ -30,6 +30,7 @@ export default function CodeEditor({
   code,
   onChange,
   onLanguageChange,
+  onMount,
   languages = ['python', 'javascript', 'cpp', 'java', 'rust'],
   height = '100%',
   showLanguageTabs = true,
@@ -38,6 +39,7 @@ export default function CodeEditor({
 
   const handleMount = (editor) => {
     editorRef.current = editor
+    if (onMount) onMount(editor)
   }
 
   const handleLanguageChange = (lang) => {
